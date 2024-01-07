@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1f2nrbjrbxxl"]
+
+[ext_resource type="Script" path="res://scripts/grid.gd" id="1_6r8ho"]
+[ext_resource type="Texture2D" uid="uid://b7w4ckq5i5vc8" path="res://art/HighlightCell.png" id="2_3qvb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn3fl"]
+size = Vector2(509, 304.523)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3s4h"]
+size = Vector2(51.0586, 1465)
+
+[node name="Grid" type="Node2D"]
+script = ExtResource("1_6r8ho")
+
+[node name="HighlightCell" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_3qvb1")
+offset = Vector2(16, 16)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Area2D" type="Area2D" parent="."]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(224.5, -154.477)
+shape = SubResource("RectangleShape2D_yn3fl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(224.5, 601.262)
+shape = SubResource("RectangleShape2D_yn3fl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-27, 314)
+shape = SubResource("RectangleShape2D_q3s4h")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(476.965, 58.5)
+shape = SubResource("RectangleShape2D_q3s4h")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

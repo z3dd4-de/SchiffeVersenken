@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://c84qxpggippu"]
+
+[ext_resource type="Script" path="res://scripts/battleship.gd" id="1_jh7ru"]
+[ext_resource type="Texture2D" uid="uid://bcm0xg55upiqw" path="res://art/Battleship/ShipBattleshipHull.png" id="2_xjalv"]
+[ext_resource type="Texture2D" uid="uid://bjnakx3smec02" path="res://art/Battleship/WeaponBattleshipStandardGun.png" id="3_12o0x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ca12r"]
+radius = 14.0
+height = 208.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8nbj"]
+size = Vector2(96, 288)
+
+[node name="Battleship" type="Node2D" groups=["ship"]]
+script = ExtResource("1_jh7ru")
+x = 1
+y = 7
+ship_type = "Battleship"
+ship_description = "The longest ship (1*7 cells) comes with two shots per round. This might be an advantage in the early game."
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("2_xjalv")
+
+[node name="Gun1" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-3.8147e-06, -58)
+scale = Vector2(0.46, 0.38)
+texture = ExtResource("3_12o0x")
+
+[node name="Gun2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-3.8147e-06, -39)
+scale = Vector2(0.46, 0.38)
+texture = ExtResource("3_12o0x")
+
+[node name="Gun3" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-3.8147e-06, 74)
+rotation = 3.14159
+scale = Vector2(0.46, 0.38)
+texture = ExtResource("3_12o0x")
+
+[node name="Gun4" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(3.8147e-06, 55)
+rotation = 3.14159
+scale = Vector2(0.46, 0.38)
+texture = ExtResource("3_12o0x")
+
+[node name="Area2D" type="Area2D" parent="." groups=["ship"]]
+y_sort_enabled = true
+position = Vector2(-16, -109)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, 110)
+shape = SubResource("CapsuleShape2D_ca12r")
+
+[node name="NoShipAllowedArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoShipAllowedArea"]
+shape = SubResource("RectangleShape2D_p8nbj")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="NoShipAllowedArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="NoShipAllowedArea" to="." method="_on_area_2d_area_exited"]

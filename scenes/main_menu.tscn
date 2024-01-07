@@ -1,0 +1,349 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl7nssfu1h1e6"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_8t5k3"]
+[ext_resource type="Texture2D" uid="uid://j05s8twj20p5" path="res://art/BB61_USS_Iowa_BB61_broadside_USN.jpg" id="1_83ddb"]
+[ext_resource type="AudioStream" uid="uid://weod45hnf2u1" path="res://audio/battleThemeA.mp3" id="3_67eso"]
+[ext_resource type="AudioStream" uid="uid://bqu6aatxvns7b" path="res://audio/jet_plane.mp3" id="4_55ta1"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_8t5k3")
+
+[node name="Bb61UssIowaBb61BroadsideUsn" type="Sprite2D" parent="."]
+position = Vector2(579, 242)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_83ddb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenuPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -119.0
+offset_right = 145.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainVBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="CanvasLayer/MainVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start Game"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/MainVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/MainVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="SettingsBackButton" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -50.0
+offset_right = 143.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Back to Main Menu"
+
+[node name="AudioBackButton" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -50.0
+offset_right = 143.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Back to Settings Menu"
+
+[node name="VideoBackButton" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -50.0
+offset_right = 143.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Back to Settings Menu"
+
+[node name="StartGameBackButton" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -50.0
+offset_right = 143.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Back to Main Menu"
+
+[node name="SettingsVBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -65.0
+offset_right = 59.5
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioButton" type="Button" parent="CanvasLayer/SettingsVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Audio"
+
+[node name="VideoButton" type="Button" parent="CanvasLayer/SettingsVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Video"
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.5
+offset_right = 183.5
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Ship Battle"
+
+[node name="AudioPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -313.0
+offset_top = -107.0
+offset_right = 314.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="AudioVBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -81.0
+offset_right = 279.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/AudioVBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="MainVolumeLabel" type="Label" parent="CanvasLayer/AudioVBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Master"
+
+[node name="MainVolumeHSlider" type="HSlider" parent="CanvasLayer/AudioVBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="MusicVolumeLabel" type="Label" parent="CanvasLayer/AudioVBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music"
+
+[node name="MusicVolumeHSlider" type="HSlider" parent="CanvasLayer/AudioVBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SfxLabel" type="Label" parent="CanvasLayer/AudioVBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sound Effects"
+
+[node name="SfxHSlider" type="HSlider" parent="CanvasLayer/AudioVBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="VideoPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -71.0
+offset_right = 125.5
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoVBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -67.0
+offset_right = 117.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/VideoVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="FullscreenLabel" type="Label" parent="CanvasLayer/VideoVBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Fullscreen"
+
+[node name="FullscreenCheckButton" type="CheckButton" parent="CanvasLayer/VideoVBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BorderlessLabel" type="Label" parent="CanvasLayer/VideoVBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Borderless"
+
+[node name="BorderlessCheckButton" type="CheckButton" parent="CanvasLayer/VideoVBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="VsyncLabel" type="Label" parent="CanvasLayer/VideoVBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "V-Sync Mode"
+
+[node name="VsyncCheckButton" type="CheckButton" parent="CanvasLayer/VideoVBoxContainer/GridContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="StartGamePanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -86.0
+offset_right = 133.5
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartGameVBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -45.0
+offset_right = 81.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SinglePlayerButton" type="Button" parent="CanvasLayer/StartGameVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Single Player"
+
+[node name="MultiPlayerButton" type="Button" parent="CanvasLayer/StartGameVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Multiplayer"
+
+[node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_67eso")
+autoplay = true
+bus = &"Music"
+
+[node name="MainMenuSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_55ta1")
+bus = &"Effects"
+
+[connection signal="pressed" from="CanvasLayer/MainVBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainVBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainVBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SettingsBackButton" to="." method="_on_settings_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/AudioBackButton" to="." method="_on_audio_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VideoBackButton" to="." method="_on_video_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartGameBackButton" to="." method="_on_start_game_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SettingsVBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SettingsVBoxContainer/VideoButton" to="." method="_on_video_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/AudioVBoxContainer/GridContainer/MainVolumeHSlider" to="." method="_on_main_volume_h_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/AudioVBoxContainer/GridContainer/MusicVolumeHSlider" to="." method="_on_music_volume_h_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/AudioVBoxContainer/GridContainer/SfxHSlider" to="." method="_on_sfx_h_slider_value_changed"]
+[connection signal="toggled" from="CanvasLayer/VideoVBoxContainer/GridContainer/FullscreenCheckButton" to="." method="_on_fullscreen_check_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VideoVBoxContainer/GridContainer/BorderlessCheckButton" to="." method="_on_borderless_check_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VideoVBoxContainer/GridContainer/VsyncCheckButton" to="." method="_on_vsync_check_button_toggled"]
+[connection signal="pressed" from="CanvasLayer/StartGameVBoxContainer/SinglePlayerButton" to="." method="_on_single_player_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartGameVBoxContainer/MultiPlayerButton" to="." method="_on_multi_player_button_pressed"]

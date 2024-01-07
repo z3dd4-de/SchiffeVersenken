@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cha34ogi0e2bv"]
+
+[ext_resource type="Script" path="res://scripts/submarine.gd" id="1_ouu2g"]
+[ext_resource type="Texture2D" uid="uid://csjgw6fdec2cj" path="res://art/Submarine/ShipSubMarineHull.png" id="2_7hkrf"]
+[ext_resource type="Texture2D" uid="uid://bwmkpsyypn8ce" path="res://art/Submarine/WeaponSubmarineStandard.png" id="3_do30q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4v0yb"]
+radius = 8.0
+height = 128.0
+
+[node name="Submarine" type="Node2D" groups=["ship"]]
+script = ExtResource("1_ouu2g")
+x = 1
+y = 4
+ship_type = "Submarine"
+ship_description = "The submarine is mid-size (1*4 cells), but the first hit will not be recognized by the enemy. So the first hit will be shown as no hit for the enemy, but then it must surface and can be hit like any other ship. Another advantage is that a torpedo hit randomly hits another neighboring cell as well."
+
+[node name="ShipSubMarineHull" type="Sprite2D" parent="."]
+position = Vector2(0.249992, 0.25)
+scale = Vector2(0.928571, 0.897887)
+texture = ExtResource("2_7hkrf")
+
+[node name="WeaponSubmarineStandard" type="Sprite2D" parent="ShipSubMarineHull"]
+position = Vector2(0, -30.349)
+scale = Vector2(0.600591, 0.570121)
+texture = ExtResource("3_do30q")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-15.75, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["ship"]]
+position = Vector2(16, 64)
+shape = SubResource("CapsuleShape2D_4v0yb")
+
+[node name="NoShipAllowedArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoShipAllowedArea"]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="NoShipAllowedArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="NoShipAllowedArea" to="." method="_on_area_2d_area_exited"]

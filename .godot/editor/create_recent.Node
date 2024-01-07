@@ -1,0 +1,15 @@
+CanvasLayer
+Button
+AudioStreamPlayer2D
+Timer
+Sprite2D
+PanelContainer
+TextureButton
+RichTextLabel
+Label
+Panel
+VBoxContainer
+CheckButton
+GridContainer
+HSlider
+MarginContainer

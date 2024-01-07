@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://coicavch7p0qs"]
+
+[ext_resource type="Script" path="res://scripts/add_ships.gd" id="1_ejrqe"]
+[ext_resource type="PackedScene" uid="uid://c1f2nrbjrbxxl" path="res://scenes/grid.tscn" id="1_pgx88"]
+[ext_resource type="PackedScene" uid="uid://c84qxpggippu" path="res://scenes/battleship.tscn" id="2_74h12"]
+[ext_resource type="PackedScene" uid="uid://dtmts0ht7416e" path="res://scenes/carrier.tscn" id="3_vdjw0"]
+[ext_resource type="PackedScene" uid="uid://cmd7ix0umxj4v" path="res://scenes/cruiser.tscn" id="4_qtser"]
+[ext_resource type="PackedScene" uid="uid://x6ls8vmltr3t" path="res://scenes/destroyer.tscn" id="5_5hntu"]
+[ext_resource type="PackedScene" uid="uid://dmggvu4kcrw61" path="res://scenes/patrol.tscn" id="6_swhx8"]
+[ext_resource type="PackedScene" uid="uid://cha34ogi0e2bv" path="res://scenes/submarine.tscn" id="7_py6wm"]
+[ext_resource type="PackedScene" uid="uid://dh7mwmh4u2urp" path="res://scenes/rescue_ship.tscn" id="8_mr4xq"]
+[ext_resource type="AudioStream" uid="uid://p8p6tsiitpf2" path="res://audio/Battle in the winter.mp3" id="10_m5qv7"]
+
+[node name="AddShips" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ejrqe")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.278431, 0.278431, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 17.0
+offset_top = -4.0
+offset_right = 233.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 28
+text = "Place your ships"
+
+[node name="Grid" parent="." instance=ExtResource("1_pgx88")]
+position = Vector2(18, 37)
+
+[node name="Battleship" parent="." instance=ExtResource("2_74h12")]
+position = Vector2(530, 139)
+
+[node name="Carrier" parent="." instance=ExtResource("3_vdjw0")]
+position = Vector2(582, 131)
+
+[node name="Cruiser" parent="." instance=ExtResource("4_qtser")]
+position = Vector2(629, 99)
+
+[node name="Cruiser2" parent="." instance=ExtResource("4_qtser")]
+position = Vector2(661, 99)
+
+[node name="Destroyer" parent="." instance=ExtResource("5_5hntu")]
+position = Vector2(722, 100)
+
+[node name="Patrol" parent="." instance=ExtResource("6_swhx8")]
+position = Vector2(776, 96)
+
+[node name="Patrol2" parent="." instance=ExtResource("6_swhx8")]
+position = Vector2(797, 96)
+
+[node name="Patrol3" parent="." instance=ExtResource("6_swhx8")]
+position = Vector2(816, 96)
+
+[node name="Submarine" parent="." instance=ExtResource("7_py6wm")]
+position = Vector2(693, 102)
+
+[node name="RescueShip" parent="." instance=ExtResource("8_mr4xq")]
+position = Vector2(750, 101)
+
+[node name="HelpLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 838.0
+offset_top = 67.0
+offset_right = 1145.0
+offset_bottom = 222.0
+text = "With the left mouse button you can select a ship. Space bar rotates the selected ship. Click again with the left mouse button to place it on the grid. Right mouse button de-selects a ship and puts it back to its original location."
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 509.0
+offset_top = 289.0
+offset_right = 1142.0
+offset_bottom = 507.0
+columns = 2
+
+[node name="SelectLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Selected ship: "
+
+[node name="ShipSelectedContent" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Ship name"
+
+[node name="DescriptionLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Description:"
+
+[node name="DescriptionText" type="RichTextLabel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "ffdfkfkfdhfdhfkfjdfkjhfjfkjdhkjfhdkjfhdfjhdfjhdfkjdfjfkdjfhsdkjfhdkfjhfdsjffjsdkf"
+
+[node name="ShowHelpButton" type="Button" parent="."]
+offset_left = 1109.0
+offset_top = 6.0
+offset_right = 1147.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+text = " ? "
+
+[node name="ErrorLabel" type="Label" parent="."]
+offset_left = 19.0
+offset_top = 518.0
+offset_right = 582.0
+offset_bottom = 560.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "No ship on grid!"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -83.0
+offset_right = -16.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="StartGameButton" type="Button" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 30
+text = "Start Game"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_m5qv7")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="ShowHelpButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]

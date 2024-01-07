@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://pvfroivf6oki"]
+
+[ext_resource type="Script" path="res://scripts/radar.gd" id="1_ildx4"]
+[ext_resource type="Texture2D" uid="uid://2xgivo0a5u77" path="res://art/radar_background.png" id="2_5tg1t"]
+[ext_resource type="Texture2D" uid="uid://i5wt5gj5kdml" path="res://art/radar_sweep.png" id="3_b8616"]
+[ext_resource type="Texture2D" uid="uid://dtl88787pxsp6" path="res://art/radar_01.png" id="4_vgrho"]
+
+[node name="Radar" type="Node2D"]
+script = ExtResource("1_ildx4")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_5tg1t")
+
+[node name="Rotating" type="Sprite2D" parent="."]
+texture = ExtResource("3_b8616")
+
+[node name="FixedSurface" type="Sprite2D" parent="."]
+texture = ExtResource("4_vgrho")

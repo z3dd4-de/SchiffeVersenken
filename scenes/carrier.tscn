@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtmts0ht7416e"]
+
+[ext_resource type="Script" path="res://scripts/carrier.gd" id="1_clv68"]
+[ext_resource type="Texture2D" uid="uid://3m4mdj2e0hms" path="res://art/Carrier/ShipCarrierHull.png" id="2_xvhsm"]
+[ext_resource type="Texture2D" uid="uid://b652vpjf16oyo" path="res://art/Plane/PlaneF-35Lightning2.png" id="3_rxogf"]
+[ext_resource type="AudioStream" uid="uid://bqu6aatxvns7b" path="res://audio/jet_plane.mp3" id="4_r1kac"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2fo7"]
+radius = 25.0
+height = 190.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwp4j"]
+size = Vector2(128, 256)
+
+[sub_resource type="Animation" id="Animation_ns3tj"]
+resource_name = "JetTakeOff"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.999996, 76), Vector2(-10, 0), Vector2(-30, -130)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../JetSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kc3cq"]
+_data = {
+"JetTakeOff": SubResource("Animation_ns3tj")
+}
+
+[node name="Carrier" type="Node2D" groups=["ship"]]
+y_sort_enabled = true
+script = ExtResource("1_clv68")
+x = 2
+y = 6
+ship_type = "Carrier"
+ship_description = "The largest ship with 2*6 cells. But it comes with an advantage: instead of firing it uses the plane to attack the enemy. When this hits a target, automatically 4 neighboring cells are also attacked."
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-2, 1)
+texture = ExtResource("2_xvhsm")
+
+[node name="Area2D" type="Area2D" parent="." groups=["ship"]]
+position = Vector2(-34, -95)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(33, 95)
+shape = SubResource("CapsuleShape2D_i2fo7")
+
+[node name="NoShipAllowedArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoShipAllowedArea"]
+shape = SubResource("RectangleShape2D_lwp4j")
+
+[node name="F35" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0.999996, 76)
+rotation = -0.143117
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_rxogf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="F35"]
+libraries = {
+"": SubResource("AnimationLibrary_kc3cq")
+}
+
+[node name="JetSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_r1kac")
+bus = &"Effects"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="NoShipAllowedArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="NoShipAllowedArea" to="." method="_on_area_2d_area_exited"]

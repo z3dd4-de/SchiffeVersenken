@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://byts181muwrmi"]
+
+[ext_resource type="Script" path="res://scripts/enemy_grid.gd" id="1_6vysp"]
+[ext_resource type="Texture2D" uid="uid://b7w4ckq5i5vc8" path="res://art/HighlightCell.png" id="2_0phgj"]
+
+[node name="EnemyGrid" type="Node2D"]
+script = ExtResource("1_6vysp")
+
+[node name="HighlightCell" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_0phgj")
+offset = Vector2(16, 16)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Test"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

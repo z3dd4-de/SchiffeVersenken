@@ -1,0 +1,17 @@
+res://scenes/carrier.tscn
+res://scripts/grid.gd
+res://scenes/battleship.tscn
+res://scenes/cruiser.tscn
+res://scenes/destroyer.tscn
+res://scenes/patrol.tscn
+res://scenes/rescue_ship.tscn
+res://scenes/submarine.tscn
+res://scenes/game.tscn
+res://scenes/add_ships.tscn
+res://scenes/main_menu.tscn
+res://scenes/grid.tscn
+res://scenes/enemy_grid.tscn
+res://scenes/credits.tscn
+res://scenes/settings.tscn
+res://scenes/radar.tscn
+res://scripts/enemy_grid.gd
