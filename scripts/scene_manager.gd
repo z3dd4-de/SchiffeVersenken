@@ -8,8 +8,8 @@ class_name NSceneManager
 	"Menu": "res://scenes/main_menu.tscn",
 	"Credits": "res://scenes/credits.tscn",
 	"Game": "res://scenes/game.tscn",
-	"Settings": "res://scenes/settings.tscn",
-	"AddShips": "res://scenes/add_ships.tscn"
+	"AddShips": "res://scenes/add_ships.tscn",
+	"Lobby": "res://scenes/multiplayer_lobby.tscn"
 }
  
 # Alias of the currently selected scene

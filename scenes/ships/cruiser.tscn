@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cmd7ix0umxj4v"]
 
-[ext_resource type="Script" path="res://scripts/cruiser.gd" id="1_e5ehf"]
-[ext_resource type="Texture2D" uid="uid://bhj4oaacnkyp2" path="res://art/Cruiser/ShipCruiserHull.png" id="2_xs637"]
-[ext_resource type="Texture2D" uid="uid://76vjli104fqs" path="res://art/Cruiser/WeaponCruiserStandardSTSM.png" id="3_gaeta"]
+[ext_resource type="Script" path="res://scripts/cruiser.gd" id="1_3lx25"]
+[ext_resource type="Texture2D" uid="uid://bhj4oaacnkyp2" path="res://art/Cruiser/ShipCruiserHull.png" id="2_pe538"]
+[ext_resource type="Texture2D" uid="uid://76vjli104fqs" path="res://art/Cruiser/WeaponCruiserStandardSTSM.png" id="3_qcf38"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_862iy"]
 height = 124.0
@@ -12,7 +12,7 @@ size = Vector2(96, 192)
 
 [node name="Cruiser" type="Node2D" groups=["ship"]]
 y_sort_enabled = true
-script = ExtResource("1_e5ehf")
+script = ExtResource("1_3lx25")
 x = 1
 y = 4
 ship_type = "Cruiser"
@@ -20,15 +20,15 @@ ship_description = "The cruiser has no large footprint (1*4 cells), but only has
 
 [node name="ShipCruiserHull" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
-texture = ExtResource("2_xs637")
+texture = ExtResource("2_pe538")
 
 [node name="Battery1" type="Sprite2D" parent="ShipCruiserHull"]
 position = Vector2(0, -24)
-texture = ExtResource("3_gaeta")
+texture = ExtResource("3_qcf38")
 
 [node name="Battery2" type="Sprite2D" parent="ShipCruiserHull"]
 position = Vector2(0, 41)
-texture = ExtResource("3_gaeta")
+texture = ExtResource("3_qcf38")
 
 [node name="Area2D" type="Area2D" parent="." groups=["ship"]]
 position = Vector2(-16, -65)

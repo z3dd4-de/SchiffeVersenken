@@ -45,5 +45,5 @@ func _on_button_pressed() -> void:
 	$HelpLabel.visible = !$HelpLabel.visible
 
 
-func _on_start_game_button_pressed():
+func _on_start_game_button_pressed() -> void:
 	SceneManager.SwitchScene("Game")

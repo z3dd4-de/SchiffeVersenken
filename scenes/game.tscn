@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw3wlgsaj62d"]
+[gd_scene load_steps=8 format=3 uid="uid://bw3wlgsaj62d"]
 
 [ext_resource type="PackedScene" uid="uid://c1f2nrbjrbxxl" path="res://scenes/grid.tscn" id="1_fst11"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_w3pd8"]
+[ext_resource type="PackedScene" uid="uid://byts181muwrmi" path="res://scenes/enemy_grid.tscn" id="3_qqwvo"]
 [ext_resource type="Texture2D" uid="uid://bmkqpkuvr1psg" path="res://art/aim.png" id="3_x3wel"]
 [ext_resource type="Texture2D" uid="uid://c74uutqfejcvw" path="res://art/aim_fired.png" id="4_ewd8m"]
 [ext_resource type="Texture2D" uid="uid://33dbgkp2vo1f" path="res://art/aim_disabled.png" id="5_s5xec"]
@@ -18,7 +19,7 @@ color = Color(0.258824, 0.258824, 0.258824, 1)
 [node name="PlayerGrid" parent="." instance=ExtResource("1_fst11")]
 position = Vector2(14, 64)
 
-[node name="EnemyGrid" parent="." instance=ExtResource("1_fst11")]
+[node name="EnemyGrid" parent="." instance=ExtResource("3_qqwvo")]
 position = Vector2(660, 64)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -50,6 +51,15 @@ offset_right = 1151.0
 offset_bottom = 49.0
 text = "Time"
 horizontal_alignment = 2
+
+[node name="TurnLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 113.0
+offset_bottom = 47.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+text = "It's your turn"
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 visible = false

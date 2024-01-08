@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmggvu4kcrw61"]
 
-[ext_resource type="Script" path="res://scripts/patrol.gd" id="1_857no"]
-[ext_resource type="Texture2D" uid="uid://bj3tse8js5xfv" path="res://art/PatrolBoat/ShipPatrolHull.png" id="2_0242e"]
+[ext_resource type="Script" path="res://scripts/patrol.gd" id="1_uxt0b"]
+[ext_resource type="Texture2D" uid="uid://bj3tse8js5xfv" path="res://art/PatrolBoat/ShipPatrolHull.png" id="2_2aluq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2q173"]
 radius = 6.0
@@ -12,7 +12,7 @@ size = Vector2(96, 128)
 
 [node name="Patrol" type="Node2D" groups=["ship"]]
 y_sort_enabled = true
-script = ExtResource("1_857no")
+script = ExtResource("1_uxt0b")
 x = 1
 y = 2
 ship_type = "Patrol Ship"
@@ -20,7 +20,7 @@ ship_description = "This ship is the smallest of all ships (1*2 cells) and you h
 
 [node name="ShipPatrolHull" type="Sprite2D" parent="."]
 position = Vector2(0, -3)
-texture = ExtResource("2_0242e")
+texture = ExtResource("2_2aluq")
 
 [node name="Area2D" type="Area2D" parent="." groups=["ship"]]
 position = Vector2(-16, -35)

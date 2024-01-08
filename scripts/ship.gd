@@ -11,14 +11,31 @@ var y_offset: int
 @onready var start_position = global_position
 
 var angle = 0
-
+var max_hits: int
+var sunk = false
+var hits = 0
 var selected = false
+var ship_owner
 
 #func _draw() -> void:
 #	var half_x = x * Globals.PX / 2
 #	var half_y = y * Globals.PX / 2
 #	var rect = Rect2(Vector2(-half_x - Globals.PX, -half_y - Globals.PX), Vector2i(2 * half_x + 2 * Globals.PX, 2 * half_y + 2 * Globals.PX))
 #	draw_rect(rect, Color.BLUE)
+
+func get_hit() -> void:
+	if !sunk:
+		hits += 1
+		if hits == max_hits:
+			sunk = true
+
+
+func get_max_hits() -> int:
+	return max_hits
+
+
+func set_max_hits() -> int:
+	return x * y
 
 
 func get_ship_type() -> String:

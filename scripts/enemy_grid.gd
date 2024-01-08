@@ -8,14 +8,6 @@ var pos: Vector2i
 var ships: Array[Ship]
 var orientation = [0, 90, 180, 270]
 
-const _carrier = preload("res://scenes/carrier.tscn")
-const _battleship = preload("res://scenes/battleship.tscn")
-const _cruiser = preload("res://scenes/cruiser.tscn")
-const _destroyer = preload("res://scenes/destroyer.tscn")
-const _rescue = preload("res://scenes/rescue_ship.tscn")
-const _patrol = preload("res://scenes/patrol.tscn")
-const _submarine = preload("res://scenes/submarine.tscn")
-
 
 func _ready() -> void:
 	for i in Globals.width:
@@ -39,13 +31,15 @@ func _ready() -> void:
 
 
 func place_ships():
+	var ran
+	var x
+	var y
+	var pos
+	var origin
 	for i in 10:
-		var ran = get_random_orientation()
-		var x = 0
-		var y = 0
-		var pos
-		#print(ran)
-		#print(ships[i].ship_type)
+		ran = get_random_orientation()
+		x = 0
+		y = 0
 		ships[i].angle = ran
 		if i == 0: # Carrier
 			if ran == 0 or ran == 180:
@@ -54,8 +48,9 @@ func place_ships():
 			else:
 				x = randi_range(3, Globals.width - (ships[i].y - 1))
 				y = randi_range(1, Globals.height - (ships[i].x - 1))
-			print(ships[i].ship_type + " on " + Globals.get_cell_name(x, y))
-			var _ship = preload("res://scenes/carrier.tscn").instantiate()
+			origin = Globals.get_cell_name(x, y)
+			print(ships[i].ship_type + " on " + origin)
+			var _ship = preload("res://scenes/ships/carrier.tscn").instantiate()
 			_ship.position = Vector2(x * Globals.PX, y * Globals.PX)
 			_ship.rotation_degrees = ran
 			add_child(_ship)
@@ -70,6 +65,8 @@ func place_ships():
 							else:
 								cont = ships[i].ship_type
 							if Globals.get_cell_name(k, l) != "":
+								if Globals.get_cell_name(k, l) == origin:
+									cont = ships[i].ship_type + "-origin"
 								print(Globals.get_cell_name(k, l) + "; " + cont)
 								grid_content[Globals.get_cell_name(k, l)] = cont
 			else:
@@ -81,22 +78,15 @@ func place_ships():
 								cont = "reserved"
 							else:
 								cont = ships[i].ship_type
-							print(Globals.get_cell_name(k, l) + "; " + cont)
-							grid_content[Globals.get_cell_name(k, l)] = cont
+							if Globals.get_cell_name(k, l) != "":
+								if Globals.get_cell_name(k, l) == origin:
+									cont = ships[i].ship_type + "-origin"
+								print(Globals.get_cell_name(k, l) + "; " + cont)
+								grid_content[Globals.get_cell_name(k, l)] = cont
 		elif i == 1: # Battleship
 			Globals.valid_position = false
-			#while(!Globals.valid_position):
-			#	if ran == 0 or ran == 180:
-			#		x = randi_range(0, Globals.width)
-			#		y = randi_range(3, Globals.height - 4)
-			#	else:
-			#		x = randi_range(3, Globals.width - 4)
-			#		y = randi_range(0, Globals.height - 1)
-			#	print(ships[i].ship_type + " on " + Globals.get_cell_name(x, y))
-				
-			#	Globals.valid_position = true
 			pos = get_valid_position(ships[i])
-			var _ship = preload("res://scenes/battleship.tscn").instantiate()
+			var _ship = preload("res://scenes/ships/battleship.tscn").instantiate()
 			_ship.position = Vector2(pos.x * Globals.PX + Globals.PX/2, pos.y * Globals.PX + Globals.PX/2)
 			print("Ship position: ", _ship.position)
 			_ship.rotation_degrees = ships[i].angle

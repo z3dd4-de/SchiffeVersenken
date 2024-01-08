@@ -18,6 +18,12 @@ var current_ship: Ship
 var valid_position = false
 var last_cell = ""
 
+enum Player_type { PLAYER1, PLAYER2, ENEMY }
+var players: Array[Player]
+
+var is_multiplayer = false
+var server_ip = ""
+
 
 func _ready() -> void:
 	for i in height:

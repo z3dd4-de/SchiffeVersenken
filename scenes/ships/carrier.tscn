@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dtmts0ht7416e"]
 
-[ext_resource type="Script" path="res://scripts/carrier.gd" id="1_clv68"]
-[ext_resource type="Texture2D" uid="uid://3m4mdj2e0hms" path="res://art/Carrier/ShipCarrierHull.png" id="2_xvhsm"]
-[ext_resource type="Texture2D" uid="uid://b652vpjf16oyo" path="res://art/Plane/PlaneF-35Lightning2.png" id="3_rxogf"]
-[ext_resource type="AudioStream" uid="uid://bqu6aatxvns7b" path="res://audio/jet_plane.mp3" id="4_r1kac"]
+[ext_resource type="Script" path="res://scripts/carrier.gd" id="1_py4y2"]
+[ext_resource type="Texture2D" uid="uid://3m4mdj2e0hms" path="res://art/Carrier/ShipCarrierHull.png" id="2_5b7m6"]
+[ext_resource type="Texture2D" uid="uid://b652vpjf16oyo" path="res://art/Plane/PlaneF-35Lightning2.png" id="3_6t0f2"]
+[ext_resource type="AudioStream" uid="uid://bqu6aatxvns7b" path="res://audio/jet_plane.mp3" id="4_4oaq6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2fo7"]
 radius = 25.0
@@ -46,7 +46,7 @@ _data = {
 
 [node name="Carrier" type="Node2D" groups=["ship"]]
 y_sort_enabled = true
-script = ExtResource("1_clv68")
+script = ExtResource("1_py4y2")
 x = 2
 y = 6
 ship_type = "Carrier"
@@ -55,7 +55,7 @@ ship_description = "The largest ship with 2*6 cells. But it comes with an advant
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(-2, 1)
-texture = ExtResource("2_xvhsm")
+texture = ExtResource("2_5b7m6")
 
 [node name="Area2D" type="Area2D" parent="." groups=["ship"]]
 position = Vector2(-34, -95)
@@ -75,7 +75,7 @@ y_sort_enabled = true
 position = Vector2(0.999996, 76)
 rotation = -0.143117
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_rxogf")
+texture = ExtResource("3_6t0f2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="F35"]
 libraries = {
@@ -83,7 +83,7 @@ libraries = {
 }
 
 [node name="JetSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_r1kac")
+stream = ExtResource("4_4oaq6")
 bus = &"Effects"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

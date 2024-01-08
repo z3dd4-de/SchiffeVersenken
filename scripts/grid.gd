@@ -1,5 +1,5 @@
 @tool
-class_name Grid extends Node2D
+class_name SvGrid extends Node2D
 
 var line_width: int = 3
 var grid_content: Dictionary

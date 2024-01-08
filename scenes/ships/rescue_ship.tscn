@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh7mwmh4u2urp"]
 
-[ext_resource type="Script" path="res://scripts/rescue_ship.gd" id="1_sixpa"]
-[ext_resource type="Texture2D" uid="uid://bybdd7lvuka64" path="res://art/Rescue Ship/ShipRescue.png" id="2_slfdg"]
+[ext_resource type="Script" path="res://scripts/rescue_ship.gd" id="1_tfb7q"]
+[ext_resource type="Texture2D" uid="uid://bybdd7lvuka64" path="res://art/Rescue Ship/ShipRescue.png" id="2_bjy14"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gwq63"]
 height = 92.0
@@ -11,7 +11,7 @@ size = Vector2(96, 160)
 
 [node name="RescueShip" type="Node2D" groups=["ship"]]
 y_sort_enabled = true
-script = ExtResource("1_sixpa")
+script = ExtResource("1_tfb7q")
 x = 1
 y = 3
 ship_type = "Rescue Ship"
@@ -20,7 +20,7 @@ ship_description = "The rescue ship cannot fire at all, but is small-sized (1*3 
 [node name="ShipRescue" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 scale = Vector2(1, 0.94)
-texture = ExtResource("2_slfdg")
+texture = ExtResource("2_bjy14")
 
 [node name="Area2D" type="Area2D" parent="." groups=["ship"]]
 position = Vector2(-16, -49)

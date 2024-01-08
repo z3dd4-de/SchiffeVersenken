@@ -116,6 +116,21 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "Back to Main Menu"
 
+[node name="MultiplayerGameBackButton" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -50.0
+offset_right = 143.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Back to Game Menu"
+
 [node name="SettingsVBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 visible = false
 anchors_preset = 8
@@ -129,6 +144,11 @@ offset_right = 59.5
 offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SettingsLabel" type="Label" parent="CanvasLayer/SettingsVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Settings"
 
 [node name="AudioButton" type="Button" parent="CanvasLayer/SettingsVBoxContainer"]
 layout_mode = 2
@@ -160,10 +180,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -313.0
-offset_top = -107.0
-offset_right = 314.0
-offset_bottom = 87.0
+offset_left = -313.5
+offset_top = -113.5
+offset_right = 313.5
+offset_bottom = 113.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -181,6 +201,11 @@ offset_right = 279.0
 offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AudioLabel" type="Label" parent="CanvasLayer/AudioVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Audio Options"
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/AudioVBoxContainer"]
 layout_mode = 2
@@ -232,10 +257,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.5
-offset_top = -71.0
-offset_right = 125.5
-offset_bottom = 71.0
+offset_left = -142.0
+offset_top = -97.5
+offset_right = 142.0
+offset_bottom = 97.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -252,6 +277,11 @@ offset_right = 117.0
 offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VideoLabel" type="Label" parent="CanvasLayer/VideoVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Video Options"
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/VideoVBoxContainer"]
 layout_mode = 2
@@ -290,10 +320,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -133.5
-offset_top = -86.0
-offset_right = 133.5
-offset_bottom = 86.0
+offset_left = -145.0
+offset_top = -100.5
+offset_right = 145.0
+offset_bottom = 100.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -311,6 +341,11 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="StartGameLabel" type="Label" parent="CanvasLayer/StartGameVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Game Options"
+
 [node name="SinglePlayerButton" type="Button" parent="CanvasLayer/StartGameVBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -320,6 +355,75 @@ text = "Single Player"
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Multiplayer"
+
+[node name="MultiplayerPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.5
+offset_top = -159.5
+offset_right = 148.5
+offset_bottom = 159.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MultiplayerVBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -127.5
+offset_right = 86.0
+offset_bottom = 127.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MultiplayerLabel" type="Label" parent="CanvasLayer/MultiplayerVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Multiplayer"
+
+[node name="PlayerNameTextEdit" type="LineEdit" parent="CanvasLayer/MultiplayerVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Player 1"
+placeholder_text = "Player name"
+
+[node name="ClientServerOptionButton" type="OptionButton" parent="CanvasLayer/MultiplayerVBoxContainer"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Server (Player 1)"
+popup/item_0/id = 0
+popup/item_1/text = "Client (Player 2)"
+popup/item_1/id = 1
+
+[node name="NetworkOptionButton" type="OptionButton" parent="CanvasLayer/MultiplayerVBoxContainer"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "LAN (default)"
+popup/item_0/id = 0
+popup/item_1/text = "Bluetooth"
+popup/item_1/id = 1
+popup/item_1/disabled = true
+
+[node name="ServerIPTextEdit" type="LineEdit" parent="CanvasLayer/MultiplayerVBoxContainer"]
+layout_mode = 2
+text = "192.168.178.1"
+placeholder_text = "192.168.178.1"
+
+[node name="StartNetworkGameButton" type="Button" parent="CanvasLayer/MultiplayerVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start Game"
 
 [node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_67eso")
@@ -337,6 +441,7 @@ bus = &"Effects"
 [connection signal="pressed" from="CanvasLayer/AudioBackButton" to="." method="_on_audio_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VideoBackButton" to="." method="_on_video_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/StartGameBackButton" to="." method="_on_start_game_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MultiplayerGameBackButton" to="." method="_on_multiplayer_game_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SettingsVBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SettingsVBoxContainer/VideoButton" to="." method="_on_video_button_pressed"]
 [connection signal="value_changed" from="CanvasLayer/AudioVBoxContainer/GridContainer/MainVolumeHSlider" to="." method="_on_main_volume_h_slider_value_changed"]
@@ -347,3 +452,4 @@ bus = &"Effects"
 [connection signal="toggled" from="CanvasLayer/VideoVBoxContainer/GridContainer/VsyncCheckButton" to="." method="_on_vsync_check_button_toggled"]
 [connection signal="pressed" from="CanvasLayer/StartGameVBoxContainer/SinglePlayerButton" to="." method="_on_single_player_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/StartGameVBoxContainer/MultiPlayerButton" to="." method="_on_multi_player_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MultiplayerVBoxContainer/StartNetworkGameButton" to="." method="_on_start_network_game_button_pressed"]

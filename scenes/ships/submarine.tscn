@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://cha34ogi0e2bv"]
 
-[ext_resource type="Script" path="res://scripts/submarine.gd" id="1_ouu2g"]
-[ext_resource type="Texture2D" uid="uid://csjgw6fdec2cj" path="res://art/Submarine/ShipSubMarineHull.png" id="2_7hkrf"]
-[ext_resource type="Texture2D" uid="uid://bwmkpsyypn8ce" path="res://art/Submarine/WeaponSubmarineStandard.png" id="3_do30q"]
+[ext_resource type="Script" path="res://scripts/submarine.gd" id="1_dkr6n"]
+[ext_resource type="Texture2D" uid="uid://csjgw6fdec2cj" path="res://art/Submarine/ShipSubMarineHull.png" id="2_xlqkw"]
+[ext_resource type="Texture2D" uid="uid://bwmkpsyypn8ce" path="res://art/Submarine/WeaponSubmarineStandard.png" id="3_g0aep"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4v0yb"]
 radius = 8.0
 height = 128.0
 
 [node name="Submarine" type="Node2D" groups=["ship"]]
-script = ExtResource("1_ouu2g")
+script = ExtResource("1_dkr6n")
 x = 1
 y = 4
 ship_type = "Submarine"
@@ -18,12 +18,12 @@ ship_description = "The submarine is mid-size (1*4 cells), but the first hit wil
 [node name="ShipSubMarineHull" type="Sprite2D" parent="."]
 position = Vector2(0.249992, 0.25)
 scale = Vector2(0.928571, 0.897887)
-texture = ExtResource("2_7hkrf")
+texture = ExtResource("2_xlqkw")
 
 [node name="WeaponSubmarineStandard" type="Sprite2D" parent="ShipSubMarineHull"]
 position = Vector2(0, -30.349)
 scale = Vector2(0.600591, 0.570121)
-texture = ExtResource("3_do30q")
+texture = ExtResource("3_g0aep")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-15.75, -64)
