@@ -17,27 +17,31 @@ func _ready() -> void:
 
 
 func test_ship_location() -> bool:
-	snap_to_grid()
 	print("Grid: test location")
 	if Globals.current_ship != null:
 		print("Ship to be placed: ", Globals.current_ship.ship_type)
 		print("Current orientation: ", Globals.current_ship.angle)
+		snap_to_grid()
 	return true
 
 
 func snap_to_grid() -> void:
 	if Globals.current_ship != null and Globals.last_cell != "" and Globals.valid_position:
+		var pos = Globals.get_cell_coordinates(Globals.last_cell)
 		if Globals.current_ship.angle == 0 or Globals.current_ship.angle == 180:
 			# vertical ship position
 			print("Center " + Globals.current_ship.ship_type + " on " + Globals.last_cell)
-			#for i in Globals.current_ship.x:
-			#	for j in Globals.current_ship.y:
+			
+			Globals.current_ship.position = Vector2(pos.x + Globals.current_ship.x_pos_v, pos.y + Globals.current_ship.y_pos_v)
+		else:
+			# horizontal ship position
+			Globals.current_ship.position = Vector2(pos.x + Globals.current_ship.x_pos_h, pos.y + Globals.current_ship.y_pos_h)
 
 
 func not_valid() -> void:
 	is_valid = false
 	Globals.valid_position = is_valid
-	print("Not valid")
+	#print("Not valid")
 
 
 func _draw() -> void:
@@ -102,7 +106,6 @@ func _on_area_2d_area_entered(area) -> void:
 		#print("Ship entered: Area")
 		Globals.show_default_error()
 		is_valid = false
-
 
 
 func _on_area_2d_area_exited(area) -> void:

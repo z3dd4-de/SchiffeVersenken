@@ -14,6 +14,14 @@ func _ready() -> void:
 	Globals.ShowError.connect(show_error)
 	disable_error_label()
 	Globals.current_ship = null
+	
+	# Debug only: TODO remove when ready (is initialized by main_menu or multiplayer lobby)
+	if Globals.players.size() == 0:
+		Globals.players.append(Player.new("Player 1", Globals.Player_type.PLAYER1))
+		Globals.players.append(Player.new("Enemy", Globals.Player_type.ENEMY))
+		Globals.players[0].can_place_ships = true
+	#else:	# initialized in main_menu
+	#	print("Global players (main menu): ", Globals.players.size())
 
 
 func show_ship_details(type: String, descr: String) -> void:
@@ -46,4 +54,5 @@ func _on_button_pressed() -> void:
 
 
 func _on_start_game_button_pressed() -> void:
+	Globals.players[0].can_place_ships = false
 	SceneManager.SwitchScene("Game")

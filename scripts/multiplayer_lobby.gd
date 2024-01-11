@@ -5,7 +5,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CanvasLayer/StatusLabel.text = "Wait for other player to join... [ Server started: " + Globals.server_ip + " ]"
-	print(Globals.players)
 	for i in Globals.players:
 		if i.p_type == Globals.Player_type.PLAYER1:
 			$CanvasLayer/LobbyVBoxContainer/Player1Label.text = i.p_name

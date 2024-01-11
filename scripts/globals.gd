@@ -67,3 +67,29 @@ func get_cell_name(x: int, y: int) -> String:
 	else:
 		return ""
 
+
+func get_cell_coordinates(cell_name: String):
+	var letter = cell_name[0]
+	var number
+	if cell_name.length() == 2:
+		number = cell_name[1]
+	else:
+		number = cell_name[1] + cell_name[2]
+	var num = int(float(number))
+	print("Letter: ", letter)
+	print("Number: ", num)
+	var cnt_letter = 0
+	var cnt_number = 0
+	var cnt = 0
+	for i in letters:
+		cnt += 1
+		if i == letter:
+			cnt_letter = cnt * PX
+			print("Pos letter: ", cnt_letter)
+	cnt = 0
+	for i in numbers:
+		cnt += 1
+		if i == num:
+			cnt_number = cnt * PX
+			print("Pos number: ", cnt_number)
+	return Vector2i(cnt_letter, cnt_number)

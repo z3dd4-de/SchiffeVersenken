@@ -5,6 +5,14 @@ class_name Ship extends Node2D
 @export var y: int
 var x_offset: int
 var y_offset: int
+var x_pos_h: int
+var y_pos_h: int
+var x_pos_v: int
+var y_pos_v: int
+var location_array: Dictionary
+var shots_per_round: int
+var current_player: Player
+
 @export var ship_type: String
 @export var ship_description: String
 
@@ -48,16 +56,17 @@ func get_ship_area() -> Vector2i:
 
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx) -> void:
+	var allowed = Globals.players[0].can_place_ships
 	if event is InputEventMouseButton and event.pressed:
 		event.position += shift_position()
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
 				#print("Left Mouse")
-				if !selected and Globals.current_ship == null:
+				if !selected and Globals.current_ship == null and allowed:
 					selected = true
 					Globals.current_ship = self
 					get_ship_type()
-				else:
+				elif selected and allowed and Globals.current_ship != null:
 					if Globals.valid_position:
 						Globals.drop_ship()
 						selected = false
@@ -99,12 +108,12 @@ func rotate_ship(ang: int) -> void:
 
 func _on_area_2d_area_entered(area) -> void:
 	if area.is_in_group("ship"):
-		print("Ship entered: Ship-")
+		#print("Ship entered: Ship-")
 		Globals.valid_position = false
 		Globals.show_error("Ships must not overlap and need to have one line distance to the next ship!")
 
 
 func _on_area_2d_area_exited(area) -> void:
 	if area.is_in_group("ship"):
-		print("Ship left")
+		#print("Ship left")
 		Globals.delete_default_error()

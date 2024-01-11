@@ -111,6 +111,9 @@ func _on_sfx_h_slider_value_changed(value) -> void:
 
 
 func _on_single_player_button_pressed() -> void:
+	Globals.players.append(Player.new("Player 1", Globals.Player_type.PLAYER1))
+	Globals.players.append(Player.new("Enemy", Globals.Player_type.ENEMY))
+	Globals.players[0].can_place_ships = true
 	SceneManager.SwitchScene("AddShips")
 
 

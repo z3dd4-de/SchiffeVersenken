@@ -19,7 +19,6 @@ ship_type = "Battleship"
 ship_description = "The longest ship (1*7 cells) comes with two shots per round. This might be an advantage in the early game."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
 texture = ExtResource("2_b4ur7")
 
 [node name="Gun1" type="Sprite2D" parent="Sprite2D"]
@@ -49,12 +48,13 @@ y_sort_enabled = true
 position = Vector2(-16, -109)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(16, 110)
+position = Vector2(16, 109)
 shape = SubResource("CapsuleShape2D_ca12r")
 
 [node name="NoShipAllowedArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoShipAllowedArea"]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_p8nbj")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

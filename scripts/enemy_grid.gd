@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+class_name Enemy_grid extends Node2D
 
 var line_width: int = 3
 var grid_content: Dictionary
