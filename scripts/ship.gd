@@ -17,12 +17,14 @@ var current_player: Player
 @export var ship_description: String
 
 @onready var start_position = global_position
+var center_field: String
 
 var angle = 0
 var max_hits: int
 var sunk = false
 var hits = 0
 var selected = false
+var placed = false
 var ship_owner
 
 #func _draw() -> void:
@@ -58,30 +60,43 @@ func get_ship_area() -> Vector2i:
 func _on_area_2d_input_event(_viewport, event, _shape_idx) -> void:
 	var allowed = Globals.players[0].can_place_ships
 	if event is InputEventMouseButton and event.pressed:
-		event.position += shift_position()
-		match event.button_index:
-			MOUSE_BUTTON_LEFT:
-				#print("Left Mouse")
-				if !selected and Globals.current_ship == null and allowed:
-					selected = true
-					Globals.current_ship = self
+		if !Globals.game_running:
+			event.position += shift_position()
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+					#print("Left Mouse")
+					if !selected and Globals.current_ship == null and allowed:
+						selected = true
+						Globals.current_ship = self
+						get_ship_type()
+						if placed:
+							Globals.ShipRemoved.emit()
+							placed = false
+					elif selected and allowed and Globals.current_ship != null:
+						if Globals.valid_position:
+							Globals.drop_ship()
+							center_field = Globals.last_cell
+							selected = false
+							placed = true
+							Globals.current_ship = null
+							Globals.show_ship_details("No ship selected", "")
+						else:
+							Globals.show_error("Ship cannot be placed on " + Globals.last_cell + ".")
+				MOUSE_BUTTON_RIGHT:
+					#print("Right Mouse: deselect")
+					selected = false
+					Globals.current_ship = null
+					Globals.show_ship_details("No ship selected", "")
+					position = start_position
+					rotate_ship(0)
+					Globals.delete_default_error()
+		else: # game_running
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+					print("Left Mouse")
 					get_ship_type()
-				elif selected and allowed and Globals.current_ship != null:
-					if Globals.valid_position:
-						Globals.drop_ship()
-						selected = false
-						Globals.current_ship = null
-						Globals.show_ship_details("No ship selected", "")
-					else:
-						Globals.show_error("Ship cannot be placed on " + Globals.last_cell + ".")
-			MOUSE_BUTTON_RIGHT:
-				#print("Right Mouse: deselect")
-				selected = false
-				Globals.current_ship = null
-				Globals.show_ship_details("No ship selected", "")
-				position = start_position
-				rotate_ship(0)
-				Globals.delete_default_error()
+				MOUSE_BUTTON_RIGHT:
+					print("Right Mouse: deselect")
 
 
 func shift_position() -> Vector2:
@@ -104,6 +119,12 @@ func _input(event) -> void:
 
 func rotate_ship(ang: int) -> void:
 	rotation_degrees = ang
+	if ship_type == "Carrier" and angle == 180:
+		x_pos_v -= 10
+		y_pos_v += 2
+	elif ship_type == "Carrier" and angle == 270:
+		x_pos_h -= 2
+		y_pos_h -= 2
 
 
 func _on_area_2d_area_entered(area) -> void:

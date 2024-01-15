@@ -4,6 +4,10 @@ class_name SvGrid extends Node2D
 var line_width: int = 3
 var grid_content: Dictionary
 var is_valid = false
+var ships_remaining = 10
+
+signal AllShipsPlaced
+signal NotAllShipsPlaced
 
 
 func _ready() -> void:
@@ -14,6 +18,12 @@ func _ready() -> void:
 	#print(grid_content)
 	Globals.DropShip.connect(test_ship_location)
 	Globals.NotValid.connect(not_valid)
+	Globals.ShipRemoved.connect(ship_removed)
+
+
+func ship_removed():
+	ships_remaining += 1
+	test_ship_count()
 
 
 func test_ship_location() -> bool:
@@ -31,11 +41,21 @@ func snap_to_grid() -> void:
 		if Globals.current_ship.angle == 0 or Globals.current_ship.angle == 180:
 			# vertical ship position
 			print("Center " + Globals.current_ship.ship_type + " on " + Globals.last_cell)
-			
+			Globals.current_ship.center_field = Globals.last_cell
 			Globals.current_ship.position = Vector2(pos.x + Globals.current_ship.x_pos_v, pos.y + Globals.current_ship.y_pos_v)
 		else:
 			# horizontal ship position
 			Globals.current_ship.position = Vector2(pos.x + Globals.current_ship.x_pos_h, pos.y + Globals.current_ship.y_pos_h)
+		ships_remaining -= 1
+		test_ship_count()
+
+
+func test_ship_count():
+	print("Ships remaining (Grid): ", ships_remaining)
+	if ships_remaining == 0:
+		AllShipsPlaced.emit()
+	else:
+		NotAllShipsPlaced.emit()
 
 
 func not_valid() -> void:
@@ -68,11 +88,12 @@ func _draw() -> void:
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		#print("Mouse Click/Unclick at: ", event.position)
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			highlight_cell()
-			var cell_content = test_cell()
-			print("Cell content: ", cell_content)
-			# place ship on grid
+		if !Globals.game_running:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				highlight_cell()
+				var cell_content = test_cell()
+				print("Cell content: ", cell_content)
+				# place ship on grid
 
 
 func test_cell() -> String:

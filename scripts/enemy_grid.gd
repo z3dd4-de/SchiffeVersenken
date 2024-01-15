@@ -49,7 +49,7 @@ func place_ships():
 				x = randi_range(3, Globals.width - (ships[i].y - 1))
 				y = randi_range(1, Globals.height - (ships[i].x - 1))
 			origin = Globals.get_cell_name(x, y)
-			print(ships[i].ship_type + " on " + origin)
+			#print(ships[i].ship_type + " on " + origin)
 			var _ship = preload("res://scenes/ships/carrier.tscn").instantiate()
 			_ship.position = Vector2(x * Globals.PX, y * Globals.PX)
 			_ship.rotation_degrees = ran
@@ -88,11 +88,11 @@ func place_ships():
 			pos = get_valid_position(ships[i])
 			var _ship = preload("res://scenes/ships/battleship.tscn").instantiate()
 			_ship.position = Vector2(pos.x * Globals.PX + Globals.PX/2, pos.y * Globals.PX + Globals.PX/2)
-			print("Ship position: ", _ship.position)
+			#print("Ship position: ", _ship.position)
 			_ship.rotation_degrees = ships[i].angle
 			add_child(_ship)
 		
-	print(grid_content)
+	#print(grid_content)
 
 
 func get_random_orientation() -> int:

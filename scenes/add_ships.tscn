@@ -137,6 +137,7 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 30
+disabled = true
 text = "Start Game"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://xox5avcopsuu"]
+
+[ext_resource type="Script" path="res://scripts/compass.gd" id="1_gj5wm"]
+[ext_resource type="Texture2D" uid="uid://bml6n6kpos4e5" path="res://art/navigate.png" id="1_qqaln"]
+[ext_resource type="Texture2D" uid="uid://dmyfe8wp0rqac" path="res://art/Compass.png" id="2_itpbp"]
+
+[node name="Compass" type="Node2D"]
+script = ExtResource("1_gj5wm")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_qqaln")
+
+[node name="Needle" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_itpbp")

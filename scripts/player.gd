@@ -1,6 +1,5 @@
 class_name Player extends Node
 
-
 var p_name: String
 var p_type: Globals.Player_type
 var p_ships: Array[Ship]

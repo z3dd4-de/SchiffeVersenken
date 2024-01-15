@@ -6,10 +6,10 @@ func _init() -> void:
 	y = 4
 	x_offset = 2
 	y_offset = 0
-	x_pos_h = 0
+	x_pos_h = Globals.PX/2 + 2
 	y_pos_h = Globals.PX/2 + 5
-	x_pos_v = 0
-	y_pos_v = Globals.PX/2
+	x_pos_v = 3
+	y_pos_v = Globals.PX/2 - 10
 	shots_per_round = 1
 	max_hits = set_max_hits()
 	ship_type = "Submarine"

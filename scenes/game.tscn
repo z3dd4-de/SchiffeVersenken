@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw3wlgsaj62d"]
+[gd_scene load_steps=9 format=3 uid="uid://bw3wlgsaj62d"]
 
 [ext_resource type="PackedScene" uid="uid://c1f2nrbjrbxxl" path="res://scenes/grid.tscn" id="1_fst11"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_w3pd8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c74uutqfejcvw" path="res://art/aim_fired.png" id="4_ewd8m"]
 [ext_resource type="Texture2D" uid="uid://33dbgkp2vo1f" path="res://art/aim_disabled.png" id="5_s5xec"]
 [ext_resource type="PackedScene" uid="uid://pvfroivf6oki" path="res://scenes/radar.tscn" id="6_fpabw"]
+[ext_resource type="PackedScene" uid="uid://xox5avcopsuu" path="res://scenes/compass.tscn" id="8_qbmla"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_w3pd8")
@@ -103,12 +104,96 @@ texture_disabled = ExtResource("5_s5xec")
 [node name="Radar" parent="CanvasLayer" instance=ExtResource("6_fpabw")]
 position = Vector2(568, 138)
 
+[node name="BottomLeftPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -101.0
+offset_right = 636.0
+offset_bottom = -7.0
+grow_vertical = 0
+
+[node name="ShipSelectedLabel" type="Label" parent="CanvasLayer/BottomLeftPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 207.0
+offset_bottom = 27.0
+text = "Select a ship in your fleet."
+
+[node name="SpecialForcesLabel" type="Label" parent="CanvasLayer/BottomLeftPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 29.0
+offset_right = 133.0
+offset_bottom = 52.0
+text = "Special Forces"
+
+[node name="RepairButton" type="Button" parent="CanvasLayer/BottomLeftPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 185.0
+offset_bottom = 87.0
+text = "Repair another ship"
+
+[node name="HelpLabel" type="Label" parent="CanvasLayer/BottomLeftPanel"]
+visible = false
+layout_mode = 0
+offset_left = 431.0
+offset_top = 72.0
+offset_right = 623.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 10
+text = "Use LM to select a ship, RM to deselect."
+
+[node name="RepairShipOptionButton" type="OptionButton" parent="CanvasLayer/BottomLeftPanel"]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 56.0
+offset_right = 333.0
+offset_bottom = 87.0
+item_count = 9
+popup/item_0/text = "Battleship"
+popup/item_0/id = 0
+popup/item_1/text = "Carrier"
+popup/item_1/id = 1
+popup/item_2/text = "Cruiser 1"
+popup/item_2/id = 2
+popup/item_3/text = "Cruiser 2"
+popup/item_3/id = 3
+popup/item_4/text = "Destroyer"
+popup/item_4/id = 4
+popup/item_5/text = "Patrol 1"
+popup/item_5/id = 5
+popup/item_6/text = "Patrol 2"
+popup/item_6/id = 6
+popup/item_7/text = "Patrol 3"
+popup/item_7/id = 7
+popup/item_8/text = "Submarine"
+popup/item_8/id = 8
+
+[node name="HelpButton" type="Button" parent="CanvasLayer/BottomLeftPanel"]
+layout_mode = 0
+offset_left = 597.0
+offset_top = 5.0
+offset_right = 621.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 16
+text = " ? "
+
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 8.0
 
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 10.0
 
+[node name="Compass" parent="." instance=ExtResource("8_qbmla")]
+position = Vector2(567, 285)
+
 [connection signal="pressed" from="CanvasLayer/PanelContainer2/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BottomLeftPanel/RepairButton" to="." method="_on_repair_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BottomLeftPanel/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

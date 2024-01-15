@@ -9,7 +9,7 @@ func _init() -> void:
 	x_pos_h = 0
 	y_pos_h = Globals.PX/2 + 5
 	x_pos_v = 0
-	y_pos_v = Globals.PX/2
+	y_pos_v = Globals.PX/2 + 5
 	shots_per_round = 1
 	max_hits = set_max_hits()
 	ship_type = "Destroyer"
