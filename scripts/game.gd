@@ -16,7 +16,8 @@ func _ready() -> void:
 	start_time = Time.get_unix_time_from_system()
 	set_round_label()
 	randomize()
-	rand = randi_range(0, 1)
+	#rand = randi_range(0, 1)
+	rand = 0 # TODO: remove after testing. First we test player's first round.
 	player_first_round()
 	build_players_grid()
 	Globals.game_running = true

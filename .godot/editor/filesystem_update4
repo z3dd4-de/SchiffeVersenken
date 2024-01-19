@@ -1,6 +1,5 @@
-res://scenes/add_ships.tscn
-res://scripts/add_ships.gd
 res://scenes/ships/carrier.tscn
+res://scripts/compass.gd
 res://scenes/ships/cruiser.tscn
 res://scenes/ships/destroyer.tscn
 res://scenes/ships/patrol.tscn
@@ -8,6 +7,7 @@ res://scenes/ships/rescue_ship.tscn
 res://scenes/ships/submarine.tscn
 res://scenes/ships/battleship.tscn
 res://scenes/game.tscn
+res://scenes/add_ships.tscn
 res://scenes/main_menu.tscn
 res://scenes/grid.tscn
 res://scenes/enemy_grid.tscn
@@ -15,10 +15,7 @@ res://scenes/credits.tscn
 res://scenes/multiplayer_lobby.tscn
 res://scenes/compass.tscn
 res://scenes/radar.tscn
-res://scripts/ship.gd
-res://scripts/grid.gd
-res://scripts/game.gd
-res://scripts/player.gd
 res://scripts/enemy_grid.gd
-res://scripts/globals.gd
-res://scripts/compass.gd
+res://scripts/ship.gd
+res://scripts/game.gd
+res://scripts/grid.gd

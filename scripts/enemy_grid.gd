@@ -4,7 +4,7 @@ class_name Enemy_grid extends Node2D
 var line_width: int = 3
 var grid_content: Dictionary
 var is_valid = false
-var pos: Vector2i
+var posi: Vector2i
 var ships: Array[Ship]
 var orientation = [0, 90, 180, 270]
 

@@ -92,7 +92,7 @@ func _input(event) -> void:
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				highlight_cell()
 				var cell_content = test_cell()
-				print("Cell content: ", cell_content)
+				print("Cell content (grid): ", cell_content)
 				# place ship on grid
 
 

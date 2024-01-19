@@ -1,11 +1,11 @@
 # SchiffeVersenken
 ## Battleship, Sea Battle or in German "Schiffe versenken"
 
-References:
--[1] https://opengameart.org/content/sea-warfare-set-ships-and-more
--[2] https://docs.godotengine.org/de/4.x/tutorials/networking/high_level_multiplayer.html
--[3] https://opengameart.org/content/radar-parts
--[4] https://en.wikipedia.org/wiki/Battleship_(game)
+### References:
+[1] https://opengameart.org/content/sea-warfare-set-ships-and-more
+[2] https://docs.godotengine.org/de/4.x/tutorials/networking/high_level_multiplayer.html
+[3] https://opengameart.org/content/radar-parts
+[4] https://en.wikipedia.org/wiki/Battleship_(game)
 
 ## Introduction
 While looking for some interesting sprites and tilesets I found by chance the ships [1] that reminded me of a paper game we used to play in school: "Schiffe versenken" (in German) or "Battleship" [4] as it seems to be called in English.
@@ -15,9 +15,9 @@ In every turn the players call the field where the want to shoot at, like "B7" a
 So as I had all the necessary sprites and the game loop is also known, it seemed not to be too difficult to implement the game in Godot. Furthermore, I wanted to go a step further and do this as my first network multiplayer game [2] in this game engine.
 
 ## Currently implemented
-This is currently a work in progress, but this it what I currently have:
+This is currently a work in progress, but this it what I'm already having:
 - Main menu with audio and video options.
-- Single player: player can add their ships on the grid.
+- Single player: player can add their ships on the grid. This is transfered to the main game loop.
 - Multiplayer: lobby prepared. Server implementation following [2].
 - Separate audio busses for music and sound effects.
 - OOP: a ship class. Individual ships inherit from this class.

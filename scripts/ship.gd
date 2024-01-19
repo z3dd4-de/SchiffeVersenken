@@ -91,12 +91,14 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx) -> void:
 					rotate_ship(0)
 					Globals.delete_default_error()
 		else: # game_running
+			print("Game running")
+			event.position += shift_position()
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					print("Left Mouse")
+					print("Left Mouse - Game running")
 					get_ship_type()
 				MOUSE_BUTTON_RIGHT:
-					print("Right Mouse: deselect")
+					print("Right Mouse: deselect - Game running")
 
 
 func shift_position() -> Vector2:
